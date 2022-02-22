@@ -3,8 +3,6 @@ const { dbConnection } = require("./db/dbConfig");
 const cors = require("cors");
 require("dotenv").config();
 
-const port = process.env.PORT;
-
 //crear servidor de express
 
 const app = express();
@@ -32,6 +30,6 @@ app.use("/api/products", require("./routes/products"));
 app.use(express.static("public"));
 
 //escuchar peticiones
-app.listen(port, () => {
-  console.log(`Servidor en puerto ${port}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Servidor en puerto ${process.env.PORT}`);
 });
