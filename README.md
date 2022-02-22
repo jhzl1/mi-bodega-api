@@ -10,16 +10,15 @@ Node + Express + MongoDB
 
 [MiBodega](https://github.com/jhzl1/mi-bodega)
 
-<!--
 ## Scripts disponibles
 
-### `npm start`
+### `npm run dev`
 
 Corre el app en modo de desarrollo\
-Abre [http://localhost:3000](http://localhost:3000) para ver los cambios en tiempo real desde el navegador.
+Abre [http://localhost:4000](http://localhost:4000) para ver los cambios en tiempo real.
 
-### `npm run build`
+<!-- ### `npm run build`
 
-Compila la aplicación para producción dentro de la carpeta `build`.\
+Compila la aplicación para producción dentro de la carpeta `build`.\ -->
 
-Desarrollado por Omar Campos -->
+Desarrollado por Omar Campos
