@@ -1,10 +1,10 @@
 const { response, request } = require("express");
-const ProductModel = require("../models/ProductModel");
+const Product = require("../models/ProductModel");
 
 const createProduct = async (req = request, res = response) => {
   //obtener uid del usuario
 
-  const product = new ProductModel(req.body);
+  const product = new Product(req.body);
   product.userId = req.uid;
   try {
     const savedProduct = await product.save();
@@ -23,10 +23,15 @@ const createProduct = async (req = request, res = response) => {
   }
 };
 
-const getProducts = (req = request, res = response) => {
+const getProducts = async (req = request, res = response) => {
+  const userId = req.uid;
+  //se busca solo los productos del usuario
+  const products = await Product.find({ userId });
+
   res.json({
     ok: true,
     msg: "obtener productos",
+    products,
   });
 };
 
