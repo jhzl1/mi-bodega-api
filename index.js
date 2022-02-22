@@ -13,7 +13,7 @@ dbConnection();
 app.use(express.json());
 
 const corsOptions = {
-  origin: "http://22d3-190-96-241-182.ngrok.io/",
+  origin: "*",
   // credentials: true,
   optionsSuccessStatus: 200,
   allowedHeaders: "*",
