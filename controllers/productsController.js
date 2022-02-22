@@ -25,8 +25,8 @@ const createProduct = async (req = request, res = response) => {
 
 const getProducts = async (req = request, res = response) => {
   const userId = req.uid;
-  //se busca solo los productos del usuario
-  const products = await Product.find({ userId });
+  //se busca solo los productos del usuario y con el sort se ordena desde el mas nuevo hasta el mas viejo
+  const products = await Product.find({ userId }).sort({ _id: -1 });
 
   res.json({
     ok: true,
