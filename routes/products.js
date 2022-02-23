@@ -49,7 +49,40 @@ router.post(
   createProduct
 );
 router.get("/get", [validateField], getProducts);
-router.put("/update/:id", [validateField], updateProduct);
+router.put(
+  "/update/:id",
+  [
+    [
+      check("name", "El nombre del artículo es requerido")
+        .notEmpty()
+        .isLength({ min: 5 })
+        .withMessage("El nombre del artículo es muy corto")
+        .isLength({ max: 30 })
+        .withMessage("El nombre del artículo es muy largo"),
+      check("description", "La descripción del artículo es requerida")
+        .notEmpty()
+        .isLength({ min: 5, max: 50 })
+        .withMessage(
+          "La descripción del producto debe ser mínimo de 5 caracteres y máximo de 50"
+        ),
+      check("price", "El precio del producto es requerido")
+        .notEmpty()
+        .isNumeric()
+        .withMessage("El precio del producto debe ser un número")
+        .isFloat({ min: 1 })
+        .withMessage("El precio debe ser mínimo 1 dólar"),
+      check("quantity", "La cantidad del producto es requerida")
+        .notEmpty()
+        .isNumeric()
+        .withMessage("La cantidad del producto debe ser un número")
+        .isFloat({ min: 1 })
+        .withMessage("La cantidad debe ser mínimo 1"),
+      check("urlImage").optional(),
+      validateField,
+    ],
+  ],
+  updateProduct
+);
 router.delete("/delete/:id", [validateField], deleteProduct);
 
 module.exports = router;
